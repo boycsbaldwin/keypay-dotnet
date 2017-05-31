@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 namespace KeyPay.DomainModels.V2.Report
 {
@@ -20,23 +19,23 @@ namespace KeyPay.DomainModels.V2.Report
         public string ExternalId { get; set; }
         public decimal TotalHours { get; set; }
         public Dictionary<string, decimal> GrossEarnings { get; set; }
-        public decimal TotalGrossEarnings => GrossEarnings.Values.Sum();
+        public decimal TotalGrossEarnings { get; set; }
         public decimal TotalTaxExemptEarnings { get; set; }
         public Dictionary<string, decimal> PreTaxDeductions { get; set; }
-        public decimal TotalPreTaxDeductions => PreTaxDeductions.Values.Sum();
-        public decimal TaxableEarnings => TotalGrossEarnings - TotalTaxExemptEarnings - TotalPreTaxDeductions;
+        public decimal TotalPreTaxDeductions { get; set; }
+        public decimal TaxableEarnings { get; set; }
         public decimal Payg { get; set; }
         public decimal Sfss { get; set; }
         public decimal Help { get; set; }
         public Dictionary<string, decimal> PostTaxDeductions { get; set; }
-        public decimal TotalPostTaxDeductions => PostTaxDeductions.Values.Sum();
-        public decimal NetEarnings => TaxableEarnings - Payg - Sfss - Help - TotalPostTaxDeductions;
+        public decimal TotalPostTaxDeductions { get; set; }
+        public decimal NetEarnings { get; set; }
         public Dictionary<string, decimal> Expenses { get; set; }
-        public decimal TotalExpenses => Expenses.Values.Sum();
-        public decimal BankPayments => NetEarnings + TotalExpenses;
+        public decimal TotalExpenses { get; set; }
+        public decimal BankPayments { get; set; }
         public decimal Sgc { get; set; }
         public decimal EmployerContribution { get; set; }
-        public decimal TotalGrossPlusSuper => TotalGrossEarnings + Sgc + EmployerContribution;
+        public decimal TotalGrossPlusSuper { get; set; }
 
     }
 }
